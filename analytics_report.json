@@ -1,0 +1,218 @@
+{
+  "generated_at": "2026-05-27T09:47:33.089585Z",
+  "total_kafka_records_consumed": 12996,
+  "partition_offsets": {
+    "ecommerce_events:0": 3417,
+    "ecommerce_events:1": 3427,
+    "ecommerce_events:2": 3147,
+    "sales_events:0": 1638,
+    "sales_events:2": 1669,
+    "sales_events:1": 1689,
+    "product_reviews:0": 746,
+    "product_reviews:2": 1011,
+    "product_reviews:1": 1240
+  },
+  "ecommerce_kpis": {
+    "total_orders": 4997,
+    "total_revenue_inr": 3424426.0,
+    "avg_order_value_inr": 685.3,
+    "delivery_rate_pct": 90.65,
+    "top_5_channels": [
+      {
+        "name": "Amazon",
+        "orders": 1795
+      },
+      {
+        "name": "Myntra",
+        "orders": 1126
+      },
+      {
+        "name": "Flipkart",
+        "orders": 1079
+      },
+      {
+        "name": "Ajio",
+        "orders": 347
+      },
+      {
+        "name": "Nalli",
+        "orders": 239
+      }
+    ],
+    "top_5_categories": [
+      {
+        "name": "Set",
+        "orders": 2118
+      },
+      {
+        "name": "kurta",
+        "orders": 1505
+      },
+      {
+        "name": "Western Dress",
+        "orders": 544
+      },
+      {
+        "name": "Top",
+        "orders": 359
+      },
+      {
+        "name": "Saree",
+        "orders": 350
+      }
+    ],
+    "top_5_cities": [
+      {
+        "name": "BENGALURU",
+        "orders": 420
+      },
+      {
+        "name": "HYDERABAD",
+        "orders": 292
+      },
+      {
+        "name": "NEW DELHI",
+        "orders": 252
+      },
+      {
+        "name": "MUMBAI",
+        "orders": 210
+      },
+      {
+        "name": "CHENNAI",
+        "orders": 205
+      }
+    ],
+    "b2b_vs_b2c": {
+      "B2B": 32,
+      "B2C": 4965
+    },
+    "orders_by_status": {
+      "Delivered": 4530,
+      "Refunded": 85,
+      "Cancelled": 167,
+      "Returned": 215
+    }
+  },
+  "sales_kpis": {
+    "total_transactions": 4999,
+    "total_revenue_usd": 1425397.22,
+    "avg_transaction_value_usd": 285.14,
+    "avg_discount_pct": 14.98,
+    "avg_item_rating": 3.78,
+    "top_5_categories_by_revenue": [
+      {
+        "name": "Electronics",
+        "revenue_usd": 895402.35
+      },
+      {
+        "name": "Footwear",
+        "revenue_usd": 141086.85
+      },
+      {
+        "name": "Sports",
+        "revenue_usd": 115598.11
+      },
+      {
+        "name": "Womens Clothing",
+        "revenue_usd": 61718.41
+      },
+      {
+        "name": "Mens Clothing",
+        "revenue_usd": 59680.43
+      }
+    ],
+    "sales_by_season": {
+      "Autumn": 1230,
+      "Spring": 1300,
+      "Summer": 1225,
+      "Winter": 1244
+    },
+    "sales_by_payment_method": {
+      "Card": 4009,
+      "Cash on Delivery": 990
+    },
+    "sales_by_gender": {
+      "Female": 2503,
+      "Male": 2496
+    },
+    "customers_by_age_group": {
+      "56+": 1482,
+      "46-55": 1007,
+      "26-35": 928,
+      "18-25": 576,
+      "36-45": 1006
+    }
+  },
+  "reviews_kpis": {
+    "total_reviews": 3000,
+    "avg_rating": 4.13,
+    "verified_purchase_pct": 79.6,
+    "sentiment_breakdown": {
+      "Negative": 237,
+      "Neutral": 365,
+      "Positive": 2398
+    },
+    "rating_distribution": {
+      "1": 96,
+      "3": 365,
+      "5": 1325,
+      "4": 1073,
+      "2": 141
+    },
+    "top_5_reviewed_products": [
+      {
+        "product_id": "PROD-SET-001",
+        "reviews": 170,
+        "avg_rating": 4.06
+      },
+      {
+        "product_id": "PROD-ETHNIC-001",
+        "reviews": 168,
+        "avg_rating": 4.07
+      },
+      {
+        "product_id": "PROD-DRESS-002",
+        "reviews": 163,
+        "avg_rating": 4.15
+      },
+      {
+        "product_id": "PROD-BLOUSE-001",
+        "reviews": 161,
+        "avg_rating": 4.19
+      },
+      {
+        "product_id": "PROD-KURTA-003",
+        "reviews": 160,
+        "avg_rating": 4.17
+      }
+    ],
+    "reviews_by_category": {
+      "Set": 457,
+      "Lehenga Choli": 135,
+      "Dupatta": 146,
+      "Top": 307,
+      "Western Dress": 299,
+      "Saree": 272,
+      "kurta": 456,
+      "Ethnic Dress": 168,
+      "Jacket": 155,
+      "Blouse": 161,
+      "Bottom": 299,
+      "Suit": 145
+    },
+    "reviews_by_channel": {
+      "Myntra": 585,
+      "Amazon": 622,
+      "Ajio": 601,
+      "Nalli": 585,
+      "Flipkart": 607
+    },
+    "reviews_by_platform": {
+      "Desktop Web": 731,
+      "Mobile App": 778,
+      "Mobile Web": 749,
+      "Tablet App": 742
+    }
+  }
+}

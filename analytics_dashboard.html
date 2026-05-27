@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Retail Analytics Pipeline — Dashboard</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', sans-serif; background: #0f172a; color: #e2e8f0; }
+  header { background: linear-gradient(135deg, #1e3a5f, #0f172a); padding: 28px 40px; border-bottom: 2px solid #3B82F6; }
+  header h1 { font-size: 1.8rem; font-weight: 700; color: #60A5FA; letter-spacing: 0.5px; }
+  header p  { margin-top: 6px; color: #94a3b8; font-size: 0.9rem; }
+  .badge { display: inline-block; background: #1e3a5f; border: 1px solid #3B82F6;
+            border-radius: 20px; padding: 4px 14px; font-size: 0.8rem; color: #93C5FD;
+            margin: 4px 4px 0 0; }
+  .section-title { font-size: 1.3rem; font-weight: 600; padding: 28px 40px 0;
+                    border-left: 4px solid; padding-left: 16px; margin: 28px 40px 0; }
+  .ecommerce-title  { color: #3B82F6; border-color: #3B82F6; }
+  .sales-title      { color: #10B981; border-color: #10B981; }
+  .reviews-title    { color: #8B5CF6; border-color: #8B5CF6; }
+  .kpi-row { display: flex; flex-wrap: wrap; gap: 16px; padding: 16px 40px; }
+  .kpi { background: #1e293b; border-radius: 12px; padding: 20px 24px;
+          flex: 1 1 160px; min-width: 140px; border-top: 3px solid; }
+  .kpi.blue   { border-color: #3B82F6; }
+  .kpi.green  { border-color: #10B981; }
+  .kpi.purple { border-color: #8B5CF6; }
+  .kpi .val { font-size: 1.6rem; font-weight: 700; margin-top: 6px; }
+  .kpi .lbl { font-size: 0.75rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.8px; }
+  .charts-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+                  gap: 20px; padding: 16px 40px; }
+  .chart-box { background: #1e293b; border-radius: 14px; padding: 22px; }
+  .chart-box h3 { font-size: 0.9rem; color: #94a3b8; text-transform: uppercase;
+                   letter-spacing: 0.8px; margin-bottom: 16px; }
+  .chart-box canvas { max-height: 260px; }
+  footer { text-align: center; padding: 32px; color: #475569; font-size: 0.8rem; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Unified Retail Analytics Pipeline</h1>
+  <p>Kafka Final Project — Real-time analytics across 3 topics and 3 brokers (KRaft)</p>
+  <div style="margin-top:12px">
+    <span class="badge">Generated: 2026-05-27T09:36:35.311848Z</span>
+    <span class="badge">Total Kafka records: 12,996</span>
+    <span class="badge">3-broker KRaft cluster</span>
+    <span class="badge">acks=all · RF=3 · min.insync=2</span>
+  </div>
+</header>
+
+<!-- ── ECOMMERCE ──────────────────────────────────────────── -->
+<div class="section-title ecommerce-title">Ecommerce Events &nbsp;·&nbsp; topic: ecommerce_events &nbsp;·&nbsp; key: Order ID</div>
+<div class="kpi-row">
+  <div class="kpi blue"><div class="lbl">Total Orders</div><div class="val" style="color:#3B82F6">4,997</div></div>
+  <div class="kpi blue"><div class="lbl">Revenue (INR)</div><div class="val" style="color:#60A5FA">₹3,424,426</div></div>
+  <div class="kpi blue"><div class="lbl">Avg Order Value</div><div class="val" style="color:#93C5FD">₹685.30</div></div>
+  <div class="kpi blue"><div class="lbl">Delivery Rate</div><div class="val" style="color:#BFDBFE">90.65%</div></div>
+  <div class="kpi blue"><div class="lbl">B2B Orders</div><div class="val" style="color:#DBEAFE">32</div></div>
+  <div class="kpi blue"><div class="lbl">B2C Orders</div><div class="val" style="color:#DBEAFE">4,965</div></div>
+</div>
+<div class="charts-grid">
+  <div class="chart-box"><h3>Top 5 Sales Channels</h3><canvas id="ch"></canvas></div>
+  <div class="chart-box"><h3>Top 5 Product Categories</h3><canvas id="cat"></canvas></div>
+  <div class="chart-box"><h3>Orders by Status</h3><canvas id="st"></canvas></div>
+  <div class="chart-box"><h3>Top 5 Cities</h3><canvas id="city"></canvas></div>
+  <div class="chart-box"><h3>B2B vs B2C</h3><canvas id="b2b"></canvas></div>
+</div>
+
+<!-- ── SALES ─────────────────────────────────────────────── -->
+<div class="section-title sales-title">Sales Events &nbsp;·&nbsp; topic: sales_events &nbsp;·&nbsp; key: CustomerID</div>
+<div class="kpi-row">
+  <div class="kpi green"><div class="lbl">Total Transactions</div><div class="val" style="color:#10B981">4,999</div></div>
+  <div class="kpi green"><div class="lbl">Revenue (USD)</div><div class="val" style="color:#34D399">$1,425,397</div></div>
+  <div class="kpi green"><div class="lbl">Avg Transaction</div><div class="val" style="color:#6EE7B7">$285.14</div></div>
+  <div class="kpi green"><div class="lbl">Avg Discount</div><div class="val" style="color:#A7F3D0">14.98%</div></div>
+  <div class="kpi green"><div class="lbl">Avg Item Rating</div><div class="val" style="color:#D1FAE5">3.78 ★</div></div>
+</div>
+<div class="charts-grid">
+  <div class="chart-box"><h3>Top 5 Categories by Revenue (USD)</h3><canvas id="scat"></canvas></div>
+  <div class="chart-box"><h3>Sales by Season</h3><canvas id="seas"></canvas></div>
+  <div class="chart-box"><h3>Payment Methods</h3><canvas id="pay"></canvas></div>
+  <div class="chart-box"><h3>Sales by Gender</h3><canvas id="gen"></canvas></div>
+  <div class="chart-box"><h3>Customers by Age Group</h3><canvas id="age"></canvas></div>
+</div>
+
+<!-- ── REVIEWS ───────────────────────────────────────────── -->
+<div class="section-title reviews-title">Product Reviews &nbsp;·&nbsp; topic: product_reviews &nbsp;·&nbsp; key: ProductID</div>
+<div class="kpi-row">
+  <div class="kpi purple"><div class="lbl">Total Reviews</div><div class="val" style="color:#8B5CF6">3,000</div></div>
+  <div class="kpi purple"><div class="lbl">Avg Rating</div><div class="val" style="color:#A78BFA">4.13 ★</div></div>
+  <div class="kpi purple"><div class="lbl">Verified Purchases</div><div class="val" style="color:#C4B5FD">79.6%</div></div>
+</div>
+<div class="charts-grid">
+  <div class="chart-box"><h3>Sentiment Breakdown</h3><canvas id="sent"></canvas></div>
+  <div class="chart-box"><h3>Rating Distribution</h3><canvas id="rat"></canvas></div>
+  <div class="chart-box"><h3>Reviews by Channel</h3><canvas id="rch"></canvas></div>
+  <div class="chart-box"><h3>Reviews by Platform</h3><canvas id="rpl"></canvas></div>
+  <div class="chart-box"><h3>Top Products — Avg Rating</h3><canvas id="rprod"></canvas></div>
+</div>
+
+<footer>Kafka Final Project &nbsp;·&nbsp; 3-broker KRaft cluster &nbsp;·&nbsp; Docker &nbsp;·&nbsp; confluent-kafka</footer>
+
+<script>
+const cfg = (type, labels, data, colors, opts={}) => ({
+  type, data: { labels, datasets: [{ data, backgroundColor: colors,
+    borderColor: colors, borderWidth: type==='bar'?0:2,
+    borderRadius: type==='bar'?6:0 }] },
+  options: { responsive:true, plugins:{ legend:{ display: type!=='bar',
+    labels:{ color:'#cbd5e1' } }, tooltip:{ callbacks:{
+      label: ctx => ' ' + ctx.formattedValue } } },
+    scales: type==='bar' ? { x:{ ticks:{ color:'#94a3b8' }, grid:{ color:'#1e3a5f' } },
+      y:{ ticks:{ color:'#94a3b8' }, grid:{ color:'#1e3a5f' } } } : {},
+    ...opts } });
+
+// Ecommerce
+new Chart('ch',   cfg('bar',  ["Amazon", "Myntra", "Flipkart", "Ajio", "Nalli"],  [1795, 1126, 1079, 347, 239],  ["#3B82F6", "#60A5FA", "#93C5FD", "#BFDBFE", "#DBEAFE"]));
+new Chart('cat',  cfg('bar',  ["Set", "kurta", "Western Dress", "Top", "Saree"], [2118, 1505, 544, 359, 350], ["#3B82F6", "#60A5FA", "#93C5FD", "#BFDBFE", "#DBEAFE"]));
+new Chart('st',   cfg('doughnut', ["Delivered", "Refunded", "Cancelled", "Returned"], [4530, 85, 167, 215], ["#3B82F6", "#60A5FA", "#93C5FD", "#BFDBFE", "#DBEAFE"]));
+new Chart('city', cfg('bar',  ["BENGALURU", "HYDERABAD", "NEW DELHI", "MUMBAI", "CHENNAI"],[420, 292, 252, 210, 205],["#3B82F6", "#60A5FA", "#93C5FD", "#BFDBFE", "#DBEAFE"]));
+new Chart('b2b',  cfg('pie',  ["B2B", "B2C"], [32, 4965], ['#3B82F6','#0ea5e9']));
+
+// Sales
+new Chart('scat', cfg('bar',  ["Electronics", "Footwear", "Sports", "Womens Clothing", "Mens Clothing"],[895402.35, 141086.85, 115598.11, 61718.41, 59680.43],["#10B981", "#34D399", "#6EE7B7", "#A7F3D0", "#D1FAE5"]));
+new Chart('seas', cfg('bar',  ["Autumn", "Spring", "Summer", "Winter"],[1230, 1300, 1225, 1244],["#10B981", "#34D399", "#6EE7B7", "#A7F3D0", "#D1FAE5"]));
+new Chart('pay',  cfg('doughnut',["Card", "Cash on Delivery"],[4009, 990],["#10B981", "#34D399", "#6EE7B7", "#A7F3D0", "#D1FAE5"]));
+new Chart('gen',  cfg('pie',  ["Female", "Male"], [2503, 2496], ['#10B981','#0d9488']));
+new Chart('age',  cfg('bar',  ["56+", "46-55", "26-35", "18-25", "36-45"], [1482, 1007, 928, 576, 1006], ["#10B981", "#34D399", "#6EE7B7", "#A7F3D0", "#D1FAE5"]));
+
+// Reviews
+new Chart('sent', cfg('doughnut',["Negative", "Neutral", "Positive"],[237, 365, 2398],['#10B981','#F59E0B','#EF4444']));
+new Chart('rat',  cfg('bar',  ["5 \u2605", "4 \u2605", "3 \u2605", "2 \u2605", "1 \u2605"], [1325, 1073, 365, 141, 96], ["#8B5CF6", "#A78BFA", "#C4B5FD", "#DDD6FE", "#EDE9FE"]));
+new Chart('rch',  cfg('bar',  ["Myntra", "Amazon", "Ajio", "Nalli", "Flipkart"], [585, 622, 601, 585, 607], ["#8B5CF6", "#A78BFA", "#C4B5FD", "#DDD6FE", "#EDE9FE"]));
+new Chart('rpl',  cfg('doughnut',["Desktop Web", "Mobile App", "Mobile Web", "Tablet App"],[731, 778, 749, 742],["#8B5CF6", "#A78BFA", "#C4B5FD", "#DDD6FE", "#EDE9FE"]));
+new Chart('rprod',cfg('bar',  ["PROD-SET-001", "PROD-ETHNIC-001", "PROD-DRESS-002", "PROD-BLOUSE-001", "PROD-KURTA-003"],[4.06, 4.07, 4.15, 4.19, 4.17],["#8B5CF6", "#A78BFA", "#C4B5FD", "#DDD6FE", "#EDE9FE"]));
+</script>
+</body>
+</html>

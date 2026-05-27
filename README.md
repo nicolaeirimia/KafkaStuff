@@ -181,5 +181,3 @@ docker exec -it kafka-1 kafka-consumer-groups \
 # Stop everything
 docker compose down
 ```
-#   K a f k a S t u f f  
- 

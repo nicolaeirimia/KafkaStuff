@@ -1,0 +1,117 @@
++================================================================+
+|             RETAIL ANALYTICS PIPELINE — LIVE REPORT              |
++================================================================+
+| Generated at     :                 2026-05-27T09:46:29.197747Z |
+| Kafka records    :                                      12,996 |
++----------------------------------------------------------------+
+|     ECOMMERCE KPIs  (topic: ecommerce_events, currency: INR)     |
++----------------------------------------------------------------+
+| Total orders             :                               4,997 |
+| Total revenue            :                    INR 3,424,426.00 |
+| Avg order value          :                          INR 685.30 |
+| Delivery rate            :                              90.65% |
+|                                                                  |
+|   B2B orders             :                                  32 |
+|   B2C orders             :                               4,965 |
+|                                                                  |
+|   Orders by status:                                              |
+|     Cancelled                                              167 |
+|     Delivered                                            4,530 |
+|     Refunded                                                85 |
+|     Returned                                               215 |
+|                                                                  |
+|   Top 5 Sales Channels:                                          |
+|     1. Amazon                                     1,795 orders |
+|     2. Myntra                                     1,126 orders |
+|     3. Flipkart                                   1,079 orders |
+|     4. Ajio                                         347 orders |
+|     5. Nalli                                        239 orders |
+|                                                                  |
+|   Top 5 Product Categories:                                      |
+|     1. Set                                        2,118 orders |
+|     2. kurta                                      1,505 orders |
+|     3. Western Dress                                544 orders |
+|     4. Top                                          359 orders |
+|     5. Saree                                        350 orders |
+|                                                                  |
+|   Top 5 Cities:                                                  |
+|     1. BENGALURU                                    420 orders |
+|     2. HYDERABAD                                    292 orders |
+|     3. NEW DELHI                                    252 orders |
+|     4. MUMBAI                                       210 orders |
+|     5. CHENNAI                                      205 orders |
++----------------------------------------------------------------+
+|         SALES KPIs  (topic: sales_events, currency: USD)         |
++----------------------------------------------------------------+
+| Total transactions       :                               4,999 |
+| Total revenue            :                    USD 1,425,397.22 |
+| Avg transaction value    :                          USD 285.14 |
+| Avg discount applied     :                              14.98% |
+| Avg item rating          :                          3.78 / 5.0 |
+|                                                                  |
+|   Top 5 Categories by Revenue:                                   |
+|     1. Electronics                              USD 895,402.35 |
+|     2. Footwear                                 USD 141,086.85 |
+|     3. Sports                                   USD 115,598.11 |
+|     4. Womens Clothing                           USD 61,718.41 |
+|     5. Mens Clothing                             USD 59,680.43 |
+|                                                                  |
+|   Sales by Season:                                               |
+|     Autumn                                  1,230 transactions |
+|     Spring                                  1,300 transactions |
+|     Summer                                  1,225 transactions |
+|     Winter                                  1,244 transactions |
+|                                                                  |
+|   Sales by Payment Method:                                       |
+|     Card                                    4,009 transactions |
+|     Cash on Delivery                          990 transactions |
+|                                                                  |
+|   Sales by Gender:                                               |
+|     Female                                  2,503 transactions |
+|     Male                                    2,496 transactions |
+|                                                                  |
+|   Customers by Age Group:                                        |
+|     18-25                                        576 customers |
+|     26-35                                        928 customers |
+|     36-45                                      1,006 customers |
+|     46-55                                      1,007 customers |
+|     56+                                        1,482 customers |
++----------------------------------------------------------------+
+|              REVIEWS KPIs  (topic: product_reviews)              |
++----------------------------------------------------------------+
+| Total reviews            :                               3,000 |
+| Avg product rating       :                          4.13 / 5.0 |
+| Verified purchase        :                               79.6% |
+|                                                                  |
+|   Sentiment Breakdown:                                           |
+|     Negative                                       237 reviews |
+|     Neutral                                        365 reviews |
+|     Positive                                     2,398 reviews |
+|                                                                  |
+|   Rating Distribution:                                           |
+|     5 stars                                      1,325 reviews |
+|     4 stars                                      1,073 reviews |
+|     3 stars                                        365 reviews |
+|     2 stars                                        141 reviews |
+|     1 stars                                         96 reviews |
+|                                                                  |
+|   Top 5 Most-Reviewed Products:                                  |
+|     1. PROD-SET-001                      170 reviews  avg 4.06 |
+|     2. PROD-ETHNIC-001                   168 reviews  avg 4.07 |
+|     3. PROD-DRESS-002                    163 reviews  avg 4.15 |
+|     4. PROD-BLOUSE-001                   161 reviews  avg 4.19 |
+|     5. PROD-KURTA-003                    160 reviews  avg 4.17 |
+|                                                                  |
+|   Reviews by Channel:                                            |
+|     Amazon                                         622 reviews |
+|     Flipkart                                       607 reviews |
+|     Ajio                                           601 reviews |
+|     Myntra                                         585 reviews |
+|     Nalli                                          585 reviews |
+|                                                                  |
+|   Reviews by Platform:                                           |
+|     Mobile App                                     778 reviews |
+|     Mobile Web                                     749 reviews |
+|     Tablet App                                     742 reviews |
+|     Desktop Web                                    731 reviews |
++================================================================+
